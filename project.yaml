@@ -1,6 +1,6 @@
 specVersion: 0.0.1
-description: ''
-repository: ''
+description: 
+repository: https://github.com/newtechtest/subqlHelloWorld.git
 schema: ./schema.graphql
 network:
   endpoint: wss://polkadot.api.onfinality.io/public-ws
@@ -13,3 +13,10 @@ dataSources:
       handlers:
         - handler: handleBlock
           kind: substrate/BlockHandler
+        - handler: handleEvent
+          kind: substrate/EventHandler
+          filter:
+            module: balances
+            method: Deposit
+        - handler: handleCall
+          kind: substrate/CallHandler
